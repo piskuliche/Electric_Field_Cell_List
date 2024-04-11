@@ -6,6 +6,7 @@ PROGRAM ElectricField
     USE EfieldCalc
     USE InputModule
     USE Units
+    USE HDF5_IO
     IMPLICIT NONE
 
     INTEGER :: i, k
@@ -91,7 +92,7 @@ PROGRAM ElectricField
                 electric_field2(i,:,iconfig) = electric_field2(i,:,iconfig) * angperau**2.
                 dot1(i, iconfig) = DOT_PRODUCT(eOH1(i,:,iconfig), electric_field1(i,:,iconfig))
                 dot2(i, iconfig) = DOT_PRODUCT(eOH2(i,:,iconfig), electric_field2(i,:,iconfig))
-                Z0(i, iconfig) = positions(wstart + (i-1)*3,3, z)
+                z0(i, iconfig) = positions(wstart + (i-1)*3,3, z)
             ENDDO
         ENDDO
 
@@ -99,7 +100,13 @@ PROGRAM ElectricField
 
     CALL CPU_TIME(tend)
 
-    WRITE(*,*) tend-tstart
+    WRITE(*,*) "Main Loop Execution Time", tend-tstart
+
+    CALL CPU_TIME(tstart)
+    WRITE(*,*) shape(dot1)
+    CALL WRITE_HD5F(dot1, dot2, eOH1, eOH2, z0, nmols(which_is_water), nconfig)
+    CALL CPU_TIME(tend)
+    WRITE(*,*) "File Write Time", tend-tstart
 
     ! Write HDF5 Archive
     CALL DeallocateArrays(positions,dot1,dot2,eOH1,eOH2,z0)
