@@ -1,5 +1,6 @@
 popc_example/*
 example/*
 build/*
+deprecated/*
 *.o
 *.pyc 
