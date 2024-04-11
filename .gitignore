@@ -1,0 +1,5 @@
+popc_example/*
+example/*
+build/*
+*.o
+*.pyc 
