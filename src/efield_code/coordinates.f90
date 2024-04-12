@@ -1,3 +1,5 @@
+
+
 MODULE CoordinatesModule
     IMPLICIT NONE
     CONTAINS
@@ -35,25 +37,6 @@ MODULE CoordinatesModule
         CLOSE(10)
     END SUBROUTINE WriteXYZ
 
-    SUBROUTINE ReadXYZ(natoms, positions, filename)
-        IMPLICIT NONE
-        INTEGER, INTENT(OUT) :: natoms
-        REAL, DIMENSION(:,:), ALLOCATABLE, INTENT(OUT) :: positions
-        CHARACTER(LEN=*), INTENT(IN) :: filename
-        INTEGER :: i, j
-
-        OPEN(UNIT=10, FILE=trim(filename), STATUS='OLD')
-        READ(10,*) natoms
-        READ(10,*)
-
-        ALLOCATE(positions(natoms,3))
-
-        DO i = 1, natoms
-            READ(10,*) j, positions(i,1), positions(i,2), positions(i,3)
-        END DO
-
-        CLOSE(10)
-    END SUBROUTINE ReadXYZ
 
     SUBROUTINE Read_XYZ_Frame(xyz_unit, rO, r1, r2, rmol)
     ! ************************************************************************************
