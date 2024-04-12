@@ -26,14 +26,7 @@ SUBROUTINE Read_Input
         READ(10,*) (molnames(i), i=1, nmoltypes) ! molecule names
         READ(10,*)
         READ(10,*) (nmols(i), i=1, nmoltypes) ! number of mols
-        READ(10,*) 
-        READ(10,*) nsamples
     CLOSE(10)
-
-    IF (nsamples > nmols(which_is_water)) THEN
-        WRITE(*,*) 'Error: nsamples > nwater'
-        STOP 'Too many samples'
-    END IF
 
     DO i=1, nmoltypes
         CALL Read_Molecule(i, molnames(i), chrgs(i,:), atps(i,:), natoms(i))
@@ -87,8 +80,6 @@ SUBROUTINE DisplayInput
     WRITE(*,*) (molnames(i), i=1, nmoltypes) ! molecule names
     WRITE(*,*) 'numberofmols(:)'
     WRITE(*,*) (nmols(i), i=1, nmoltypes) ! number of mols
-    WRITE(*,*) 'nsamples (Deprecated)'
-    WRITE(*,*) nsamples
 
     WRITE(*,*) 'Charges for moltype 1'
     WRITE(*,*) (chrgs(1,i), i=1,3)

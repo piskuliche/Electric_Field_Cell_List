@@ -12,7 +12,6 @@ MODULE InputData
     INTEGER, PARAMETER :: max_config = 100
     INTEGER :: nconfig
     INTEGER :: nmoltypes, which_is_water
-    INTEGER :: nsamples ! Deprecate
     REAL    :: r_cutoff
 
     INTEGER,    DIMENSION(10) :: nmols, natoms
