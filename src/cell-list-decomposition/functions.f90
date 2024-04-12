@@ -1,4 +1,16 @@
-
+! *********************************************************************
+! This module contains the functions and subroutines that are used
+! to calculate the electric field at a point in a box with periodic
+! boundary conditions.
+!
+! These functions are:
+!   - PBC_Wrap: Wraps a position back into the box
+!   - Assign_To_Cell_Grid: Assigns a position to a cell in a grid
+!   - Electric_Field_Component: Calculates the electric field component
+!   - Field_Contribution: Calculates the electric field contribution from an atom
+!   - PBC_DIST: Calculates the distance between two points in a box
+!
+! *********************************************************************
 FUNCTION PBC_Wrap(position, box_lengths) RESULT(wrapped)
 ! This function wraps coordinates back into the box
     IMPLICIT NONE
@@ -21,6 +33,7 @@ END FUNCTION PBC_Wrap
 
 
 FUNCTION Assign_To_Cell_Grid(position, cell_nbins, box_lengths) RESULT(location_on_grid)
+! ******************************************************************************************
 ! This function takes position, a number of bins in each direction, and box lengths and then
 ! Assigns them to a specific bin.
 ! 
@@ -52,6 +65,7 @@ FUNCTION Assign_To_Cell_Grid(position, cell_nbins, box_lengths) RESULT(location_
 ! location_on_grid : INTEGER, DIMENSION(3)
 !       The bin that the positions belong to.
 !
+! ******************************************************************************************
     IMPLICIT NONE
 
     REAL, DIMENSION(3), INTENT(IN) :: position, box_lengths
@@ -114,6 +128,21 @@ END Function
 
 
 SUBROUTINE PBC_DIST(rA, rB, box_lengths, dist_vec, dist)
+! *********************************************************************
+! This subroutine calculates the distance between two points in a box
+! with periodic boundary conditions
+!
+! Inputs:
+!   - rA: Coordinates of the first point
+!   - rB: Coordinates of the second point
+!   - box_lengths: Lengths of the box in each direction
+!
+! Outputs:
+!   - dist_vec: Vector pointing from rA to rB
+!   - dist: Distance between rA and rB
+!
+! *********************************************************************
+
     IMPLICIT NONE
     REAL, DIMENSION(3) :: rA, rB, box_lengths
     REAL, DIMENSION(3) :: dist_vec

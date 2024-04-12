@@ -1,1 +1,1 @@
-add_library(cell_list cell_list.f90)
+add_library(cell_list_module cell_list_module.f90)
