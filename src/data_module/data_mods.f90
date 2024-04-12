@@ -1,3 +1,10 @@
+! ****************************************************************************************************
+!  This module stores the data for the program.
+! 
+! Copyright (C) 2024 Zeke Piskulich
+! ****************************************************************************************************
+
+
 MODULE InputData
 
     IMPLICIT NONE
@@ -16,10 +23,13 @@ MODULE InputData
 
     INTEGER :: wstart, wend, number_of_atoms
 
+    REAL, PARAMETER :: angperau = 0.52917721092d0
+
 END MODULE
 
-MODULE Units
+MODULE TimingData
+    
     IMPLICIT NONE
-    REAL, PARAMETER :: angperau = 0.52917721092d0
-END MODULE UNITS
+    REAL :: read_time, write_time, calc_time, total_time
 
+END MODULE TimingData

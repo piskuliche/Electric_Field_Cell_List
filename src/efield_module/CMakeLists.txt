@@ -1,0 +1,3 @@
+add_library(efield_module efield_module.f90)
+
+target_link_libraries(efield_module data_module cell_list_module io_module)

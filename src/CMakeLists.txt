@@ -1,2 +1,8 @@
 add_subdirectory(cell-list-decomposition)
-add_subdirectory(efield_code)
+add_subdirectory(io_module)
+add_subdirectory(efield_module)
+add_subdirectory(data_module)
+
+add_executable(electric_field_calculator electric_field.f90)
+
+target_link_libraries(electric_field_calculator efield_module data_module alloc_handler io_module cell_list_module)
