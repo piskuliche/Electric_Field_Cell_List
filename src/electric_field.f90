@@ -100,7 +100,7 @@ PROGRAM ElectricField
                 dot2(i, iconfig) = DOT_PRODUCT(eOH2(i,:,iconfig), electric_field2(i,:,iconfig))
 
                 ! III.C - Store the z-coordinate of the water molecule.
-                z0(i, iconfig) = positions(wstart + (i-1)*3,3, z)
+                z0(i, iconfig) = positions(wstart + (i-1)*3, 3, z)
             ENDDO
         ENDDO
 
