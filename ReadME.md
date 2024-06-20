@@ -1,5 +1,9 @@
 # Electric_Field_Cell_List
 
+Copyright 2024, Zeke Piskulich and Qiang Cui, Boston University.
+
+Adapted with permission from codes originally written by Prof. Ward H. Thompson, University of Kansas.
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
